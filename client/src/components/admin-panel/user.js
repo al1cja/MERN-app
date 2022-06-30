@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const UserWrapper = styled.div`
     display: grid;
@@ -20,7 +21,7 @@ const NameWrapper = styled.div`
 
 const UsernameWrapper = styled.div``;
 
-const EditUserButton = styled.button`
+const EditUserButton = styled(Link)`
     border: 2px solid #6370e6;
     border-radius: 12px;
     background-color: #6370e6;
@@ -28,6 +29,8 @@ const EditUserButton = styled.button`
     cursor: pointer;
     padding: 5px;
     color: #fff;
+    text-decoration: none;
+    text-align: center;
 
     &:hover {
         background-color: #fff;
@@ -35,12 +38,13 @@ const EditUserButton = styled.button`
     }
 `;
 
-const User = ({ key, username, name}) => {
+const User = ({ key, username, name, id }) => {
+    console.log(id)
     return (
         <UserWrapper key={key}>
             <NameWrapper>{name}</NameWrapper>
             <UsernameWrapper>{username}</UsernameWrapper>
-            <EditUserButton>Edit User</EditUserButton>
+            <EditUserButton to={{pathname: `/edit-user/${id}`}} params={{ userId: {id} }}>Edit User</EditUserButton>
         </UserWrapper>
     )
 }

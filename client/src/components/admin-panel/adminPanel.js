@@ -60,7 +60,7 @@ const AdminPanel = () => {
                     <h1>Admin Panel</h1>
                     <AddUserButton to={{pathname: "/add-user"}}>Add New User</AddUserButton>
                     {userData.map((user) => {
-                        return <User key={user.id} name={user.name} username={user.username} />
+                        return <User key={user._id} name={user.name} username={user.username} id={user._id} />
                     })}
                 </UserList>
             )}
