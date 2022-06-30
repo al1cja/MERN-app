@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom"
 import styled from "styled-components";
 
 import User from "./user";
@@ -16,7 +17,7 @@ const UserList = styled.div`
     align-items: center;
 `;
 
-const AddUserButton = styled.button`
+const AddUserButton = styled(Link)`
     align-self: flex-end;
     margin: 20px 10%;
     border: 2px solid #99c0ff;
@@ -27,6 +28,7 @@ const AddUserButton = styled.button`
     padding: 5px 30px;;
     color: #fff;
     box-sizing: border-box;
+    text-decoration: none;
 
     &:hover {
         background-color: #fff;
@@ -56,7 +58,7 @@ const AdminPanel = () => {
             ) : (
                 <UserList>
                     <h1>Admin Panel</h1>
-                    <AddUserButton>Add New User</AddUserButton>
+                    <AddUserButton to={{pathname: "/add-user"}}>Add New User</AddUserButton>
                     {userData.map((user) => {
                         return <User key={user.id} name={user.name} username={user.username} />
                     })}
